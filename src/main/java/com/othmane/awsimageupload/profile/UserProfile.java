@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -24,6 +25,10 @@ public class UserProfile {
         return Objects.equals(userProfilId, that.userProfilId)
                 && Objects.equals(username, that.username)
                 && Objects.equals(userProfileImageLink, that.userProfileImageLink);
+    }
+
+    public Optional<String> getUserProfileImageLink() {
+        return Optional.ofNullable(userProfileImageLink);
     }
 
     @Override
