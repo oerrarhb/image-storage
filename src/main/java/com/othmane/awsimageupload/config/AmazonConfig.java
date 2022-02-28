@@ -21,8 +21,6 @@ public class AmazonConfig {
         var properties = new Properties();
         properties.load(reader);
         AWSCredentials awsCredentials = new BasicAWSCredentials(properties.getProperty("accessKey"), properties.getProperty("secretKey"));
-        System.out.println(awsCredentials.getAWSAccessKeyId());
-        System.out.println(awsCredentials.getAWSSecretKey());
         return AmazonS3ClientBuilder.standard()
                 .withRegion("eu-west-3")
                 .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
