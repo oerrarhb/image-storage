@@ -27,6 +27,10 @@ public class UserProfileService {
             consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public void uploadUserProfileImage(UUID userProfileId, MultipartFile file) {
-
+        // 1. check if the image is not empty
+        // 2. If file is an image
+        // 3. The user exists in our database
+        // 4. Grab some metadata from file if any
+        // 5. Store the image in s3 and update database with s3 link
     }
 }
