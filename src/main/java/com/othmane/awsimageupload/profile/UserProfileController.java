@@ -1,6 +1,7 @@
 package com.othmane.awsimageupload.profile;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,8 +24,11 @@ public class UserProfileController {
     public List<UserProfile> getUserProfiles() {
         return userProfileService.getUserProfiles();
     }
-
+    @PostMapping(
+            path = "{userProfileId}/image/upload",
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public void uploadUserProfileImage(@PathVariable("userProfileId") UUID userProfileId, @RequestParam("file") MultipartFile file) {
-        this.userProfileService.uploadUserProfileImage(userProfileId,file);
+        this.userProfileService.uploadUserProfileImage(userProfileId, file);
     }
 }
