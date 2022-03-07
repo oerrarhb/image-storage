@@ -53,7 +53,7 @@ function MyDropzone({userProfileId}) {
         "Content-Type" : "multipart/form-data"
       }
     }).then(()=> 
-    {console.log('file uploaded sucessfully');}).catch((err)=>{console.log(err);})
+    {console.log(`file uploaded sucessfully ${userProfileId}`);}).catch((err)=>{console.log(err);})
   }, [])
   const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 

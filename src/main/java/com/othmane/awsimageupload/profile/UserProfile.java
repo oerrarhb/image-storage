@@ -35,4 +35,13 @@ public class UserProfile {
     public int hashCode() {
         return Objects.hash(userProfileId, username, userProfileImageLink);
     }
+
+    @Override
+    public String toString() {
+        return "UserProfile{" +
+                "userProfileId=" + userProfileId +
+                ", username='" + username + '\'' +
+                ", userProfileImageLink='" + userProfileImageLink + '\'' +
+                '}';
+    }
 }

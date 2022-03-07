@@ -17,6 +17,7 @@ public class FakeUserProfileDataStore {
     }
 
     public List<UserProfile> getUserProfiles() {
+        System.out.println(USER_PROFILES);
         return USER_PROFILES;
     }
 }
