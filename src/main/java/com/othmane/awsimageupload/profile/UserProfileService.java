@@ -28,12 +28,13 @@ public class UserProfileService {
     public void uploadUserProfileImage(UUID userProfileId, MultipartFile file) {
         isEmpty(file);
         isImage(file);
-        findUser(userProfileId);
+        var user = findUser(userProfileId);
         var metaData = getMetaData(file);
         var path = String.format("%s/%s", BucketName.PROFILE_IMAGE.getBucketName(), userProfileId);
         var fileName = String.format("%s-%s", file.getOriginalFilename(), UUID.randomUUID());
         try {
             fileStore.save(path, fileName, Optional.of(metaData), file.getInputStream());
+            user.setUserProfileImageLink(fileName);
         } catch (IOException e) {
             throw new IllegalStateException(e);
         }
@@ -46,8 +47,8 @@ public class UserProfileService {
         return metaData;
     }
 
-    private void findUser(UUID userProfileId) {
-        var user = this.userProfileDataAccessService.
+    private UserProfile findUser(UUID userProfileId) {
+        return this.userProfileDataAccessService.
                 getUserProfiles()
                 .stream()
                 .filter(u -> u.getUserProfileId().equals(userProfileId))

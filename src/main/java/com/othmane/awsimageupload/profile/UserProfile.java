@@ -12,8 +12,8 @@ import java.util.UUID;
 @Getter
 @Setter
 public class UserProfile {
-    private UUID userProfileId;
-    private String username;
+    private final UUID userProfileId;
+    private final String username;
     // s3 key
     private String userProfileImageLink;
 
